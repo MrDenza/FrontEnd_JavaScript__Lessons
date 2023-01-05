@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Test JS - if</title>
+	</head>
+	<body>
+		<script>
+			var test = null;
+			var lastname = prompt("Введите вашу фамилию:");
+			while (true) {
+				if (lastname !== null){
+					test = parseInt(lastname);
+					if (isNaN(test))
+						if (lastname.trim())
+							if (lastname.length >= 3)
+								break;
+							else lastname = prompt("Поле \"Фамилия\" должно состоять минимум из 3-х букв.\nВведите вашу фамилию корректно:");
+						else lastname = prompt("Поле пустое. Введите вашу фамилию:");
+					else lastname = prompt("Фамилия не может начинаться с цифр. Введите вашу фамилию корректно:");
+				}
+				else lastname = prompt("Введите вашу фамилию:");
+			}
+			var firstname = prompt("Введите ваше имя:");
+			while (true) {
+				if (firstname !== null){
+					test = parseInt(firstname);
+					if (isNaN(test))
+						if (firstname.trim())
+							if (firstname.length >= 3)
+								break;
+							else firstname = prompt("Поле \"Имя\" должно состоять минимум из 3-х букв.\nВведите ваше имя корректно:");
+						else firstname = prompt("Поле пустое. Введите вашу имя:");
+					else firstname = prompt("Имя не может начинаться с цифр. Введите ваше имя корректно:");
+				}
+				else firstname = prompt("Введите ваше имя:");
+			}
+			var patronymic = prompt("Введите ваше отчество:");
+			while (true) {
+				if (patronymic !== null){
+					test = parseInt(patronymic);
+					if (isNaN(test))
+						if (patronymic.trim())
+							if (patronymic.length >= 3)
+								break;
+							else patronymic = prompt("Поле \"Отчество\" должно состоять минимум из 3-х букв.\nВведите ваше отчество корректно:");
+						else patronymic = prompt("Поле пустое. Введите ваше отчество:");
+					else patronymic = prompt("Отчество не может начинаться с цифр. Введите ваше отчество корректно:");
+				}
+				else patronymic = prompt("Введите ваше отчество:");
+			}
+			var ageStr = prompt("Введите ваш возраст в годах:");
+			while (true) {
+				if (ageStr !==null){
+					var age = parseInt(ageStr);
+					if (!isNaN(age) && age<=120)
+						break;
+					ageStr = prompt("Введите ваш возраст корректно:")
+				}
+				else ageStr = prompt("Введите ваш возраст в годах:");
+			}
+			var sex = confirm("Ваш пол - мужской?");
+			var sexStr;
+			switch (sex) {
+				case sex = true:
+					sexStr = "Мужской";
+					break;
+				case sex = false:
+					sexStr = "Женский";
+					break;
+			}
+			var pension = "Нет";
+			if (sex === true && age >= 60 || sex === false && age >= 55)
+				pension = "Да";
+
+			alert("Ваше ФИО: " +lastname+ " " +firstname+ " " +patronymic+ "\nВаш возраст в годах: " +age+ "\nВаш возраст в днях: " +(age*365)+ "\nЧерез 5 лет вам будет: " +(age+5)+ "\nВаш пол: " +sexStr+ "\nВы на пенсии: "+pension);
+		</script>
+		<p style="font-size: 32px; color: red; text-align: center">Конец</p>
+	</body>
+</html>

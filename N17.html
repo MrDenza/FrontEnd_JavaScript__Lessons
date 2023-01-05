@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+	<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Test JS - VOWELS</title>
+	</head>
+	<body>
+		<script>
+			let text = prompt('Введите строку на русском языке для подсчёта гласных букв:');
+			let vowels = 'уеёыаоэяию';
+			function countingVowels1(input) {          // СПОСОБ - forEach
+				let c = 0;
+				input.toLowerCase().split('').forEach(el => vowels.includes(el) ? c++ : '');
+				return c;
+			}
+			function countingVowels2(input) {          // СПОСОБ - filter
+				return input.toLowerCase().split('').filter(el => vowels.includes(el)).length;
+			}
+			function countingVowels3(input) {          // СПОСОБ - reduce
+				//return input.toLowerCase().split('').reduce(red,0);
+				return input.toLowerCase().split('').reduce((count,el) => vowels.includes(el) ? (count+1) : count, 0);
+			}
+			/*function red(count,el){
+				vowels.includes(el) ? count++ : '';
+				return count;
+			}*/
+			console.log('Количество гласных букв (способ - forEach): '+countingVowels1(text)+
+						'\nКоличество гласных букв (способ - filter): '+countingVowels2(text)+
+						'\nКоличество гласных букв (способ - reduce): '+countingVowels3(text));
+
+			/*if (условие) {
+				значение1;
+			}
+			else {
+				значение2;
+			}
+			условие ? значение1 : значение2;*/
+
+			/*arr.reduce(red,0)
+			function red(count,el){
+				vowels.includes(el) ? count++ : '';
+				return count; // передаём count дальше
+			}
+
+			.reduce((count,el) =>
+				  vowels.includes(el) ?
+						(count+1) : // если условие верно, то типо передаётся return count+1
+						count, 0); // а если неверно, то return count?*/
+		</script>
+		<p style="font-size: 32px; color: red; text-align: center">Конец</p>
+	</body>
+</html>
+

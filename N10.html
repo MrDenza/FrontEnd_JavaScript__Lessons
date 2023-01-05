@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Test JS - MOOD</title>
+	</head>
+	<body>
+		<script>
+			"use strict";
+			let msg = prompt('Введите количество цветов радуги для отображения\n(от 1 до 7):');
+			do {
+				var msgNum = Number(msg);
+				console.log('Введено значение: '+msgNum);
+				if(1 <= msgNum && msgNum <= 7) {
+					mood(msgNum);
+					break;
+				}
+				else {
+					console.log('Ошибка ввода. Необходимо ввести значение от 1 до 7!');
+					msg = prompt('Введите корректное количество цветов радуги для отображения\n(от 1 до 7):');
+				}
+			}
+			while (true)
+			//способ 1
+			/*function randomDiap(n,m,quantity) {
+				let i = 1;
+				let	objectNum = [];
+				while (i <= quantity){
+					let num = Math.floor(Math.random()*(m-n+1))+n;
+					if (objectNum.indexOf(num) !== -1){
+						continue;
+					}
+					else {
+						objectNum.push(num);
+						i++;
+					}
+				}
+				console.log(objectNum);
+				return objectNum;
+			}
+			function mood(colorsCount) {
+				let colors = ['', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый'];
+				console.log( 'Цветов: ' + colorsCount);
+				let num = randomDiap(1,7,colorsCount);
+				for (let i = 1; i <= colorsCount; i++) {
+					let rainbowNum = num[i-1];
+					let colorName = colors[rainbowNum];
+					console.log(colorName);
+				}
+			}*/
+			// способ 2
+			/*function randomDiap(n,m) {
+				return Math.floor(Math.random()*(m-n+1))+n;
+			}
+			function mood(colorsCount) {
+				let colors = ['', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый'];
+				let rainbow = {};
+				console.log( 'Цветов: ' + colorsCount);
+				for (let i = 1; i <= colorsCount; i++) {
+					let n = randomDiap(1,7);
+					if (n in rainbow){
+						colorsCount++;
+						continue;
+					}
+					else{
+						rainbow[n] = true;
+						let colorName = colors[n];
+						console.log(colorName);
+					}
+				}
+			}*/
+			// способ 3
+			/*function randomDiap(n,m) {
+				return Math.floor(Math.random()*(m-n+1))+n;
+			}
+			function mood(colorsCount) {
+				let colors = ['', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый'];
+				let rainbow = {};
+				let c = 1;
+				console.log( 'Цветов: ' + colorsCount);
+				do{
+					let n = randomDiap(1,7);
+					if(Object.values(rainbow).indexOf(n) !== -1){
+						continue;
+					}
+					else {
+						rainbow[c] = n;
+						c++
+					}
+				}
+				while (c <= colorsCount)
+				for (let i = 1; i <= colorsCount; i++) {
+					let colorName = colors[rainbow[i]];
+					console.log(colorName);
+				}
+			}*/
+			// способ 4
+			/*function randomDiap(n,m) {
+				return Math.floor(Math.random()*(m-n+1))+n;
+			}
+			function mood(colorsCount) {
+				const colors=['', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый'];
+				let rainbow = {};
+				console.log( 'цветов: ' + colorsCount );
+				for ( let i=1; i<=colorsCount; i++ ) {
+					while (true){
+						var n=randomDiap(1,7);
+						if (!(n in rainbow)){
+							rainbow[n] = true;
+							break;
+						}
+					}
+					const colorName=colors[n];
+					console.log( colorName );
+				}
+			}*/
+			// способ 5
+			/*function randomDiap(n,m) {
+				return Math.floor(Math.random()*(m-n+1))+n;
+			}
+			function mood(colorsCount) {
+				const colors=['', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый'];
+				let rainbow = {};
+				console.log( 'цветов: ' + colorsCount );
+				for ( let i=1; i<=colorsCount; i++ ) {
+					do {
+						var n = randomDiap(1,7);
+					} while (n in rainbow)
+					rainbow[n] = true;
+					const colorName=colors[n];
+					console.log( colorName );
+				}
+			}*/
+			// способ 6
+			/*function randomDiap(n,m) {
+				return Math.floor(Math.random()*(m-n+1))+n;
+			}
+			function mood(colorsCount) {
+				const colors=['', 'красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый'];
+				let rainbow = {};
+				let colNum = 1;
+				console.log( 'цветов: ' + colorsCount );
+				while (colNum <= colorsCount){
+					var n = randomDiap(1,7);
+					if (n in rainbow){
+						continue;
+					}
+					rainbow[n] = true;
+					colNum++;
+					const colorName=colors[n];
+					console.log( colorName );
+				}
+			}*/
+		</script>
+		<p style="font-size: 32px; color: red; text-align: center">Конец</p>
+	</body>
+</html>

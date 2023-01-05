@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Test JS - CLASS (old)</title>
+		<style>
+			body{
+				background-color: #999999;
+			}
+			p{
+				text-align: center;
+				font-size: 32px;
+				font-weight: bold;
+				color: white;
+			}
+			div{
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			div input{
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>База напитков:</p>
+		<div>
+			<input type=button value='Ввод информации о напитке' onClick='addInfo()'>
+			<input type=button value='Получение информации о напитке' onClick='seeInfo()'>
+			<input type=button value='Удаление информации о напитке' onClick='deleteInfo()'>
+			<input type=button value='Перечень всех напитков' onClick='seeAllInfo()'>
+		</div>
+		<script>
+			"use strict";
+			let drinkStorage = new HashStorageFunc();
+
+			function HashStorageFunc() {
+				var self = this;
+				let notes = {};
+				self.addValue = function (name, info) {
+					notes[name] = info;
+				}
+				self.getValue = function (name) {
+					return notes[name];
+				}
+				self.deleteValue = function (name) {
+					if (name in notes)
+					{
+						return delete notes[name];
+					}
+					return false;
+				}
+				self.getKeys = function () {
+					return Object.keys(notes);
+				}
+			}
+
+			function addInfo() {
+				let name;
+				let recipe;
+				do {
+					name = prompt('Введите название напитка:');
+					if (name === null){
+						return false;
+					}
+				}
+				while (name.length === 0);
+				let type = confirm('Пометить этот напиток как - алкоголь?' +
+					  '\n(Ок - да, это алкоголь; Отмена - нет, это безалкогольный)');
+				let typeStr;
+				switch (type) {
+					case type = true:
+						typeStr = "Да";
+						break;
+					case type = false:
+						typeStr = "Нет";
+						break;
+				}
+				do {
+					recipe = prompt('Введите рецепт напитка:');
+				}
+				while (recipe.length === 0);
+				drinkStorage.addValue(name, {'Алкогольный': typeStr, 'Рецепт приготовления': recipe});
+				alert('Заметка добавлена!')
+				return true;
+			}
+
+			function seeInfo() {
+				let searchName = prompt('Введите название напитка для поиска:');
+				if (searchName === null){
+					return false;
+				}
+				let searchInfo = drinkStorage.getValue(searchName);
+				if (searchInfo === undefined) {
+					alert('Данный напиток не найден!');
+				}
+				else {
+					let message = '';
+					for (let searchInfoKey in searchInfo) {
+						message += searchInfoKey+ ': ' +searchInfo[searchInfoKey]+ '\n';
+					}
+					alert('Напиток: ' +searchName+ '\n' +message);
+				}
+				return true;
+			}
+
+			function deleteInfo() {
+				let searchName = prompt('Введите название напитка для удаления:');
+				if (searchName === null){
+					return false;
+				}
+				let accDelete = drinkStorage.deleteValue(searchName);
+				if (accDelete === true) {
+					 alert('Напиток успешно удалён!');
+				}
+				else {
+					alert('Такой напиток не найден!');
+				}
+				return true;
+			}
+
+			function seeAllInfo() {
+				return alert('Перечень всех напитков:\n' +(drinkStorage.getKeys().join(', ')));
+			}
+		</script>
+	</body>
+</html>
+

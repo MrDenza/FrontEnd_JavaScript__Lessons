@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Test JS - VOWELS</title>
+	</head>
+	<body>
+		<script>
+			let text = prompt('Введите строку на русском языке для подсчёта гласных букв:');
+			/*function countingVowels(input) {          // СПОСОБ 1
+				let strLower = input.toLowerCase().split('');
+				let strLen = strLower.length;
+				let c = 0;
+				for (let i = 0; i < strLen; i++){
+					if ((strLower[i] === 'а') || (strLower[i] === 'о') || (strLower[i] === 'у')
+						  || (strLower[i] === 'э') || (strLower[i] === 'ы') || (strLower[i] === 'я')
+						  || (strLower[i] === 'ё') || (strLower[i] === 'ю') || (strLower[i] === 'е')
+						  || (strLower[i] === 'и')) {
+						c++;
+					}
+				}
+				return c;
+			}*/
+			function countingVowels(input) {          // СПОСОБ 2
+				// делаем все буквы прописными . разрезаем строку на буквы (массив из букв) .
+				// . находим нужные буквы и добавляем их в массив (функция(буква): строка . ищем в строке(букву)) .
+				// . склеиваем массив из букв в строку и выдаём длину из строки состоящую из гласных букв
+				let vowels = 'уеёыаоэяию';
+				let out = input.toLowerCase().split('').filter(el => vowels.includes(el)).join('');
+				return out.length;
+			}
+			/*function countingVowels(input) {          // СПОСОБ 3
+				input = input.toLowerCase();
+				let vowels = 'уеёыаоэяию';
+				let c = 0;
+				for (let i = 0; i<input.length; i++){
+					const chr = input[i];
+					if (vowels.indexOf(chr) >= 0){
+						c++;
+					}
+				}
+				return c;
+			}*/
+			/*function countingVowels(input) {          // СПОСОБ 4
+				input = input.toLowerCase();
+				let vowels = 'уеёыаоэяию';
+				let c = 0;
+				for (let i = 0; i<input.length; i++){
+					const chr = input[i];
+					if (vowels.includes(chr)){
+						c++;
+					}
+				}
+				return c;
+			}*/
+			/*function countingVowels(input) {          // СПОСОБ 5
+				input = input.toLowerCase();
+				let vowels = {"у":true,"е":true,"ё":true,"ы":true,"а":true,"о":true,"э":true,"я":true,"и":true,"ю":true};
+				let c = 0;
+				for (let i = 0; i<input.length; i++){
+					const chr = input[i];
+					if (chr in vowels){
+						c++;
+					}
+				}
+				return c;
+			}*/
+			console.log('Количество гласных букв в предложении: '+countingVowels(text));
+		</script>
+		<p style="font-size: 32px; color: red; text-align: center">Конец</p>
+	</body>
+</html>
+
