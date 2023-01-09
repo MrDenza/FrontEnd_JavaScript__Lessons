@@ -5,24 +5,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Test JS - DOM</title>
 		<style>
-			p{
-				font-size: 32px;
-				color: red;
-				text-align: center;
-			}
-			form{
-				max-width: 500px;
-				border: 1px blue solid;
-			}
+			p {font-size: 32px; color: red; text-align: center;}
+			div{ display: flex; justify-content: center;}
+			#test1 {position: relative; padding-left: 230px;}
+			#test2 {position: relative; padding-left: 180px;}
+			span { position: absolute; left: 40px; font-weight: bold;}
+			input[type=text], textarea {width: 97%;}
+			select {width: 100%;}
 		</style>
     </head>
     <body>
 		<p>Форма 1:</p>
-		<form id="test1" action="https://fe.it-academy.by/TestForm.php" method="post" name="test1">
-		</form>
+		<div>
+			<form id="test1" action="https://fe.it-academy.by/TestForm.php" method="post" name="test1">
+			</form>
+		</div>
 		<p>Форма 2:</p>
-		<form id="test2" action="https://fe.it-academy.by/TestForm.php" method="post" name="test2">
-		</form>
+		<div>
+			<form id="test2" action="https://fe.it-academy.by/TestForm.php" method="post" name="test2">
+			</form>
+		</div>
 		<script src="JS_1.js"></script>
 		<p>Конец</p>
     </body>
