@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Test JS - ValidForm</title>
+		<style>
+			label:not([for^="type_"], [for="run_lab"]), span {
+				display: inline-block;
+				width: 200px;
+			}
+			input:not([type="radio"], [type="checkbox"]){
+				width: 240px;
+			}
+			#date_lab {
+				width: 242px;
+			}
+			select {
+				width: 247px;
+			}
+			textarea {
+				width: 445px;
+			}
+			#run_lab {
+				width: 450px;
+			}
+		</style>
+	</head>
+
+	<!-- При подвешивании тегов (например <p>) к дереву с помощью JavaScript, если в CSS прописан color: red, то стили всегда применяются как только подцепили тег, либо надо с помощью JS установить стиль оформления?-->
+	
+	<body>
+		<h3>Для внесения вашего сайта в каталог, заполните форму:</h3>
+		<form action="https://fe.it-academy.by/TestForm.php" method="post" name="form">
+			<div>
+				<label for="developer_lab">Разработчики:</label>
+				<input type="text" name="developer" id="developer_lab">
+				<i></i>
+			</div>
+			<div>
+				<label for="name_lab">Название сайта:</label>
+				<input type="text" name="name" id="name_lab">
+				<i></i>
+			</div>
+			<div>
+				<label for="site_lab">URL сайта:</label>
+				<input type="url" name="site" id="site_lab">
+				<i></i>
+			</div>
+			<div>
+				<label for="date_lab">Дата запуска сайта:</label>
+				<input type="date" name="date" id="date_lab">
+				<i></i>
+			</div>
+			<div>
+				<label for="users_lab">Посетителей в сутки:</label>
+				<input type="number" name="users" id="users_lab">
+				<i></i>
+			</div>
+			<div>
+				<label for="email_lab">E-mail для связи:</label>
+				<input type="email" name="email" id="email_lab">
+				<i></i>
+			</div>
+			<div>
+				<label for="list_lab">Рубрика каталога:</label>
+				<select name="list" id="list_lab">
+					<option value="0" selected>.....</option>
+					<option value="1">здоровье</option>
+					<option value="2">домашний уют</option>
+					<option value="3">бытовая техника</option>
+				</select>
+				<i></i>
+			</div>
+			<div>
+				<span>Размещение:</span>
+				<input type="radio" name="type" id="type_lab1" value="1">
+				<label for="type_lab1">бесплатное</label>
+				<input type="radio" name="type" id="type_lab2" value="2">
+				<label for="type_lab2">платное</label>
+				<input type="radio" name="type" id="type_lab3" value="3">
+				<label for="type_lab3">VIP</label>
+				<i></i>
+			</div>
+			<div>
+				<label for="check_lab">Разрешить отзывы:</label>
+				<input type="checkbox" name="check" id="check_lab">
+				<i></i>
+			</div>
+			<div>
+				<label for="text_lab">Описание сайта:</label><br>
+				<textarea name="text" id="text_lab"></textarea>
+				<i></i>
+			</div>
+			<div>
+				<label for="run_lab"></label>
+				<input type="submit" name="run" id="run_lab" value="Опубликовать">
+			</div>
+		</form>
+		<script src="JS_27.js"></script>
+	</body>
+</html>
+
