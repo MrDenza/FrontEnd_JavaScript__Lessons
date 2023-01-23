@@ -12,10 +12,25 @@ let elList = formInSite.elements['list'];
 let elType = formInSite.elements['type'];
 let elCheck = formInSite.elements['check'];
 let elText = formInSite.elements['text'];
-let elRun = formInSite.elements['run'];
 
-elDeveloper.addEventListener('blur',validateDev('developer',elDeveloper),false);
-function validateDev(valType, valEl) {
+let elDeveloperErr, elNameErr, elSiteErr, elDateErr, elUsersErr, elEmailErr, elListErr, elTypeErr, elCheckErr, elTextErr;
+elDeveloperErr = elNameErr = elSiteErr = elDateErr = elUsersErr = elEmailErr = elListErr = elTypeErr = elCheckErr = elTextErr = true;
+
+elDeveloper.addEventListener('blur',validateForm('developer',elDeveloper),false);
+elName.addEventListener('blur',validateForm('name',elName),false);
+elSite.addEventListener('blur',validateForm('site',elSite),false);
+elDate.addEventListener('blur',validateForm('date',elDate),false);
+elUsers.addEventListener('blur',validateForm('users',elUsers),false);
+elEmail.addEventListener('blur',validateForm('email',elEmail),false);
+elList.addEventListener('blur',validateForm('list',elList),false);
+elType[0].addEventListener('click',validateForm('type',elType[0]),false);
+elType[1].addEventListener('click',validateForm('type',elType[1]),false);
+elType[2].addEventListener('click',validateForm('type',elType[2]),false);
+elCheck.addEventListener('blur',validateForm('check',elCheck),false);
+elText.addEventListener('blur',validateForm('name',elText),false);
+formInSite.addEventListener('submit',sendForm,false);
+
+function validateForm(valType, valEl) {
 	return function(EO) {
 		EO = EO || window.event;
 		console.log('Событие: '+ EO);
@@ -49,4 +64,9 @@ function statusPrint(el, err){
 	/*let newEl = document.createElement("i"); 
 	(err === true) ? newEl.textContent = "Error!" : newEl.textContent = "Ok!";
 	el.parentNode.insertBefore(newEl, el.nextSibling);*/
+}
+
+function sendForm(EO) {
+	EO = EO || window.event;
+	//EO.preventDefault();
 }
