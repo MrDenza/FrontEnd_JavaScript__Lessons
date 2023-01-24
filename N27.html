@@ -39,10 +39,10 @@
 	</head>
 
 	<!-- При подвешивании тегов (например <p>) к дереву с помощью JavaScript, если в CSS прописан color: red, то стили всегда применяются как только подцепили тег, либо надо с помощью JS установить стиль оформления?-->
-	
+	<!-- action="https://fe.it-academy.by/TestForm.php" -->
 	<body>
 		<h3>Для внесения вашего сайта в каталог, заполните форму:</h3>
-		<form action="https://fe.it-academy.by/TestForm.php" method="post" name="form">
+		<form action="https://fe.it-academy.by/TestForm.php" method="post" name="form" >
 			<div>
 				<label for="developer_lab">Разработчики:</label>
 				<input type="text" name="developer" id="developer_lab">
@@ -55,7 +55,7 @@
 			</div>
 			<div>
 				<label for="site_lab">URL сайта:</label>
-				<input type="url" name="site" id="site_lab">
+				<input type="text" name="site" id="site_lab">
 				<i></i>
 			</div>
 			<div>
@@ -70,7 +70,7 @@
 			</div>
 			<div>
 				<label for="email_lab">E-mail для связи:</label>
-				<input type="email" name="email" id="email_lab">
+				<input type="text" name="email" id="email_lab">
 				<i></i>
 			</div>
 			<div>
@@ -85,11 +85,11 @@
 			</div>
 			<div>
 				<span>Размещение:</span>
-				<input type="radio" name="type" id="type_lab1" value="1">
+				<input type="radio" name="type" id="type_lab1" value="0">
 				<label for="type_lab1">бесплатное</label>
-				<input type="radio" name="type" id="type_lab2" value="2">
+				<input type="radio" name="type" id="type_lab2" value="1">
 				<label for="type_lab2">платное</label>
-				<input type="radio" name="type" id="type_lab3" value="3">
+				<input type="radio" name="type" id="type_lab3" value="2">
 				<label for="type_lab3">VIP</label>
 				<i></i>
 			</div>
