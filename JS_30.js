@@ -11,6 +11,7 @@ function startPosElem() {
 		// при указании в этом месте position, значения top изменяются почему-то
 	}
 	for (let i = imgAll.length - 1; i > -1; i--) {
+		// а если здесь, то top как и был изначальный и всё нормально
 		imgAll[i].style.position = 'absolute';
 	}
 }
