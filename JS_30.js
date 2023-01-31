@@ -23,17 +23,17 @@ document.onmousedown = function(eo) {
 		let clickMouseX = eo.pageX - selectElem.offsetLeft;
 		let clickMouseY = eo.pageY - selectElem.offsetTop;
 		selectElem.style.zIndex = zInd;
+		selectElem.style.cursor = 'move';
 		window.onmousemove = function(eo){
 			eo.preventDefault();
 			selectElem.style.top = (eo.pageY - clickMouseY) + 'px';
 			selectElem.style.left = (eo.pageX - clickMouseX) + 'px';
 		}
-		selectElem.onmouseup = function(eo) { 
+		selectElem.onmouseup = function(eo) {
 			window.onmousemove = null;
+			selectElem.style.cursor = 'default';
 			zInd++;
+			selectElem.onmouseup = null;
 		}
 	}
 }
-
-
-
