@@ -11,6 +11,7 @@ const textDividingScale = 0.07; // множитель для масштаба т
 const numDialVal = 12; // количество делений шкалы - зелёный круг
 const radiusDividing = 0.30; // множитель для радиуса делений шкалы - зелёный круг
 const radiusDialVal = 0.78; // множитель для расположения шкалы по меньшему радиусу
+const deg = 6; // 1 шаг деления = 6 градусов
 
 // множители для стрелок
 const hourWidth = 0.03; // длина часовой стрелки
@@ -81,9 +82,9 @@ function updateTime() {
 	const minutes = currTime.getMinutes();
 	const seconds = currTime.getSeconds();
 	console.log(currTime);
-	pointerHour.style.setProperty('rotate', `${hours*60*36/360}deg`);
-	pointerMin.style.setProperty('rotate', `${minutes*60*36/360}deg`);
-	pointerSec.style.setProperty('rotate', `${seconds*60*36/360}deg`);
+	pointerHour.style.setProperty('rotate', `${hours*30+(minutes*deg/12)}deg`);
+	pointerMin.style.setProperty('rotate', `${minutes*deg}deg`);
+	pointerSec.style.setProperty('rotate', `${seconds*deg}deg`);
 	document.getElementById('textTime').innerHTML = str0l(hours,2) + ':' + str0l(minutes,2) + ':' + str0l(seconds,2);
 }
 
