@@ -71,27 +71,22 @@ function generateClock() {
 	// ---------- отображение часов и запуск в работу ---------- 
 	//clock.style.scale = `0.25`; // способ через увеличение
 	page.appendChild(clock);
+	updateTime();
 	setInterval(updateTime,1000);
 }
 
 function updateTime() {
 	const currTime = new Date();
+	const hours = currTime.getHours();
+	const minutes = currTime.getMinutes();
+	const seconds = currTime.getSeconds();
 	console.log(currTime);
-	document.getElementById('textTime').innerHTML = getTime(currTime);
-}
-
-// форматирует время в формате чч:мм:сс
-function getTime(timeValue) {
-	const hours = timeValue.getHours();
 	pointerHour.style.setProperty('rotate', `${hours*60*36/360}deg`);
-	const minutes = timeValue.getMinutes();
 	pointerMin.style.setProperty('rotate', `${minutes*60*36/360}deg`);
-	const seconds = timeValue.getSeconds();
 	pointerSec.style.setProperty('rotate', `${seconds*60*36/360}deg`);
-	return str0l(hours,2) + ':' + str0l(minutes,2) + ':' + str0l(seconds,2);
+	document.getElementById('textTime').innerHTML = str0l(hours,2) + ':' + str0l(minutes,2) + ':' + str0l(seconds,2);
 }
 
-// дополняет значение val слева нулями до длины Len
 function str0l(val,len) {
 	let strVal = val.toString();
 	while (strVal.length < len)
