@@ -40,7 +40,7 @@ function generateClock() {
 	clock.style.cssText = `width: ${diameter}px; height: ${diameter}px; background-color: orange; border-radius: 50%; text-align: center; box-sizing: border-box; padding-top: ${diameter*textTimePadding}px; position: relative;`;
 	let clockCenterX = clock.offsetLeft + radius;
 	let clockCenterY = clock.offsetTop + radius;
-		// создаём цифровой текст с реальным временем
+		// ---------- создаём цифровой текст с реальным временем ----------
 	text = document.createElement('span');
 	text.id = 'textTime';
 	text.style.cssText = `font-size: ${diameter*textTimeScale}px; font-weight: bold;`;
