@@ -5,7 +5,6 @@ let btnStart = document.getElementById('btn-start');
 let btnReset = document.getElementById('btn-reset');
 btnStart.addEventListener('click',startGame,false);
 btnReset.addEventListener('click',resetGame,false);
-//let keyAnimFrame; // AnimFrame для старт-стоп
 
 const widthRacket = 10; // ширина ракетки
 const heightRacket = 100; // длина ракетки
@@ -93,25 +92,20 @@ generateField();
 // ---------- работа кнопок и паузы ----------
 function startGame() {
 	if (ball.run === false){
+		ball.run = true;
 		console.log('Игра запущена!');
 		ball.speedX = randomSpeed(-1,1)*ball.speedX; // скорость замедлена специально
 		ball.speedY = randomSpeed(-1,1);
-		score.add = 0;
+		ball.ox = field.width/2 - ballRadius;
+		ball.oy = field.height/2 - ballRadius;
 		document.addEventListener("keydown", runRacket,false);
 		document.addEventListener("keyup", stopRacket,false);
-		runGame();
 	}
 }
 function stopGame() {
-	/*if (keyAnimFrame){
-		cancelAnimationFrame(keyAnimFrame);
-		keyAnimFrame = undefined;
-	}*/
 	ball.run = false;
 	document.removeEventListener("keydown", runRacket,false);
 	document.removeEventListener("keyup", stopRacket,false);
-	ball.ox = field.width/2 - ballRadius;
-	ball.oy = field.height/2 - ballRadius;
 }
 function resetGame(){
 	console.log('Сброс игры!');
@@ -120,6 +114,8 @@ function resetGame(){
 	rightRacket.oy = field.height/2 - heightRacket/2;
 	leftRacket.dy = 0;
 	rightRacket.dy = 0;
+	ball.ox = field.width/2 - ballRadius;
+	ball.oy = field.height/2 - ballRadius;
 	score.left = 0;
 	score.right = 0;
 	renderGame();
@@ -163,11 +159,9 @@ function runGame() {
 	if (score.update === true){
 		stopGame();
 	}
-	else {
-		/*keyAnimFrame =*/ requestAnimationFrame(runGame);
-	}
+	requestAnimationFrame(runGame);
 }
-
+runGame();
 // ---------- обработка физики игры ----------
 function updateGame() {
 	// физика ракеток
@@ -186,9 +180,10 @@ function updateGame() {
 		rightRacket.oy = 0;
 	}
 	// физика мячика
-	ball.run = true;
-	ball.ox += ball.speedX;
-	ball.oy += ball.speedY;
+	if (ball.run === true){
+		ball.ox += ball.speedX;
+		ball.oy += ball.speedY;
+	}
 	if (ball.oy < 0 || ball.oy > field.height-ballDiameter){
 		ball.speedY =- ball.speedY;
 	}
@@ -203,13 +198,13 @@ function updateGame() {
 		console.log('Справа удар о ракетку!');
 	}
 	// условие начисления очков
-	if (ball.ox <= 0){
+	if (ball.ox <= 0 && ball.run === true){
 		score.update = true;
 		++score.left;
 		ball.ox = 0;
 		console.log('Очко получает красный игрок!');
 	}
-	if (ball.ox + ballDiameter >= field.width ){
+	if (ball.ox + ballDiameter >= field.width && ball.run === true){
 		score.update = true;
 		++score.right;
 		ball.ox = field.width - ballDiameter;
