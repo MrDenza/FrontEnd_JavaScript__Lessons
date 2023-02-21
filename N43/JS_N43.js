@@ -5,7 +5,7 @@ let btnStart = document.getElementById('btn-start');
 let btnReset = document.getElementById('btn-reset');
 btnStart.addEventListener('click',startGame,false);
 btnReset.addEventListener('click',resetGame,false);
-let keyAnimFrame; // AnimFrame для старт-стоп
+//let keyAnimFrame; // AnimFrame для старт-стоп
 
 const widthRacket = 10; // ширина ракетки
 const heightRacket = 100; // длина ракетки
@@ -103,10 +103,10 @@ function startGame() {
 	}
 }
 function stopGame() {
-	if (keyAnimFrame){
+	/*if (keyAnimFrame){
 		cancelAnimationFrame(keyAnimFrame);
 		keyAnimFrame = undefined;
-	}
+	}*/
 	ball.run = false;
 	document.removeEventListener("keydown", runRacket,false);
 	document.removeEventListener("keyup", stopRacket,false);
@@ -164,7 +164,7 @@ function runGame() {
 		stopGame();
 	}
 	else {
-		keyAnimFrame = requestAnimationFrame(runGame);
+		/*keyAnimFrame =*/ requestAnimationFrame(runGame);
 	}
 }
 
