@@ -67,7 +67,7 @@ if (!window.cancelAnimationFrame) {
 function generateField() {
 	let elField = document.createElement('div');
 	elField.style.cssText = `width: ${field.width}px; height: ${field.height}px; margin: auto; border: 2px solid black; background-color: gold; position: relative; `;
-	elField.id = 'field';
+	//elField.id = 'field';
 	field.element = elField;
 	let elLeftRacket = document.createElement('div');
 	elLeftRacket.style.cssText = `width: ${widthRacket}px; height: ${heightRacket}px; border: 1px solid gray; box-sizing: border-box; background-color: red; position: absolute; top: ${leftRacket.oy}px; left: ${leftRacket.ox}px`;
